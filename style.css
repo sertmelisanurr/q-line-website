@@ -1,111 +1,227 @@
-/* Genel ayarlar */
+/* =========================
+   GENEL AYARLAR
+========================= */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
-    background-color: #f4f6f8;
-    color: #333;
+  background-color: #f4f6f8;
+  color: #333;
 }
 
-/* Üst Menü */
+/* =========================
+   HEADER / NAV
+========================= */
 header {
-    background-color: #1f3a5f;
-    padding: 20px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  background-color: #1f3a5f;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 header h1 {
-    color: #fff;
-    font-size: 24px;
+  color: #fff;
+  font-size: 24px;
 }
 
 header nav a {
-    color: #fff;
-    margin-left: 20px;
-    text-decoration: none;
-    font-weight: bold;
+  color: #fff;
+  margin-left: 20px;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 header nav a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
-/* Ana içerik */
-.main-content {
-    padding: 60px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.main-content h2 {
-    font-size: 36px;
-    margin-bottom: 15px;
-}
-
-.main-content p {
-    font-size: 18px;
-}
-
-/* Paketler */
-.packages {
-    padding: 40px;
-}
-
-.packages h2 {
-    font-size: 28px;
-    margin-bottom: 20px;
-}
-
-.package-card {
-    background-color: #fff;
-    padding: 20px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-}
-
-.package-card h3 {
-    margin-bottom: 5px;
-}
-
-/* Buton */
-.btn {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 10px 20px;
-    background-color: #1f3a5f;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-}
-
-.btn:hover {
-    background-color: #162b45;
-}
+/* =========================
+   HERO SECTION
+========================= */
 .hero {
-    display: flex; 
-    justify-content: space-between; /* Yazı ve resmi yanlara ayırmak için */
-    align-items: center; /* Dikeyde ortalamak için */
-    padding: 60px;
-    gap: 40px; /* Yazı ve resim arası boşluk */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px;
+  gap: 40px;
 }
 
 .hero-image img {
-    width: 100%;
-    max-width: 400px; /* Resmin aşırı büyümemesi için */
+  width: 100%;
+  max-width: 400px;
+}
+
+/* =========================
+   BUTTON
+========================= */
+.btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #1f3a5f;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.btn:hover {
+  background-color: #162b45;
+}
+
+/* =========================
+   TEAM PAGE STYLES
+========================= */
+
+.team-intro {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.team-container {
+  display: flex;                 /* FLEXBOX: ekip kartlarını yatay hizalar */
+  justify-content: center;        /* Kartları yatayda ortalar */
+  align-items: center;            /* Kartları dikeyde hizalar */
+  gap: 30px;
+  margin-top: 40px;
+  flex-wrap: wrap;               /* Küçük ekranlarda alt satıra geç */
+}
+
+
+/* Kart */
+.team-card {
+  width: 250px;
+  height: 360px;
+  perspective: 1000px;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.team-card:hover {
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.8s ease-in-out;
+  transform-style: preserve-3d;  /* 3D dönüş efektini aktif eder */
+}
+
+/* Mouse kartın üzerine gelince kart 180 derece döner (Flip Card efekti) */
+.team-card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Ön & arka yüz */
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  background-color: #fff;
+}
+
+/* Ön yüz */
+.card-front img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-front h3 {
+  margin-top: 18px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  color: #1f3a5f;
+}
+
+.card-front p {
+  margin-top: 6px;
+  text-align: center;
+  font-size: 14px;
+  color: #777;
+  letter-spacing: 0.5px;
+}
+
+/* Arka yüz */
+.card-back {
+  transform: rotateY(180deg);
+  padding: 20px;
+  text-align: center;
+}
+
+.card-back ul {
+  list-style: none;
+  padding: 0; 
+  margin-top: 20px;
+}
+
+.card-back li {
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+/* Sertifika */
+.certificate {
+  width: 100%;
+  margin-top: 15px;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.4s ease-in-out;
+}
+
+/* Hover ile sertifika görünür */
+.team-card:hover .certificate {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .team-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+/* Kart hover animasyonu */
+.team-card {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+/* Lead Developer sertifika özel efekti */
+.team-card.lead .certificate {
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(31, 58, 95, 0.6);
+}
+
+/* Lead Developer kartına ekstra vurgu */
+.team-card.lead:hover {
+  transform: translateY(-15px) scale(1.03);
 }
 @media (max-width: 768px) {
-
-    .hero {
-        flex-direction: column; /* Mobilde alt alta geçmesi için */
-        text-align: center;
-    }
-
+  .team-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
